@@ -248,7 +248,9 @@ export const Header = ({
             data-search-input
             placeholder={`Search tasks... (${searchShortcut})`}
             value={searchQuery}
-            onChange={(value) => setSearchQueryMutation.mutate(value)}
+            onKeyDown={(e)=>console.log("keydown",e.key,e.code)}
+            onInput={(e)=>console.log("input",e.currentTarget.value)}
+            onChange={(value,cursorPos)=>{console.log("change",value,cursorPos);setSearchQueryMutation.mutate(value)}}
             className="w-full rounded-lg border border-transparent bg-surface-100 py-2 pr-4 pl-9 text-sm text-surface-800 transition-colors placeholder:text-surface-400 focus:border-primary-500 focus:bg-white focus:outline-hidden dark:bg-surface-700/60 dark:text-surface-200 dark:focus:bg-surface-800"
           />
         </div>
